@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+int* createAndReleasePointer() {
+    int localVar = 10; // Biến địa phương
+    int* ptr = &localVar; // Con trỏ trỏ đến biến địa phương
+    return ptr;
+}
+int main() {
+    int* dynamicPtr = createAndReleasePointer();
+    cout << *dynamicPtr << std::endl; // Undefined behavior! (behavior không xác định)
+    // Giải phóng con trỏ
+    delete dynamicPtr; // Lỗi! Con trỏ không trỏ đến vùng nhớ được cấp phát bởi toán tử new
+    return 0;
+}
