@@ -1,0 +1,7 @@
+ int* p = new int;
+ int* p2 = p;
+ *p = 10;
+ delete p; 
+*p2 = 100;//gây lỗi vì sau khi p được giải phóng bằng delete p;, con trỏ p2 vẫn trỏ đến vùng nhớ được giải phóng. Việc ghi giá trị vào vùng nhớ này sẽ dẫn đến undefined behavior.
+ cout << *p2;
+ delete p2;//ây lỗi vì p2 trỏ đến một vùng nhớ đã được giải phóng trước đó bằng delete p;. Cố gắng giải phóng một vùng nhớ đã được giải phóng trước đó sẽ dẫn đến undefined behavior.
